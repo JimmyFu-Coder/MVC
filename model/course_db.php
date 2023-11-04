@@ -37,9 +37,9 @@ function delete_course($course_id){
 
 function add_course($course_name){
     global $db;
-    $query = "INSERT INTO courses (courseName) VALUES (:courseName)";
+    $query = 'INSERT INTO courses (courseName) VALUES (:courseName)';
     $statement = $db->prepare($query);
-    $statement->bindValue(":couseName", $course_name);
+    $statement->bindValue(':courseName', $course_name);
     $statement->execute();
     $statement->closeCursor();
 }

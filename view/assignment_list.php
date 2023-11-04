@@ -1,4 +1,4 @@
-<?php include("view/header.php");?>
+<?php include('view/header.php') ?>
 
 <section id="list" class="list">
     <header class="list__row list__header">
@@ -48,6 +48,7 @@
     <br>
     <?php } ?>
 </section>
+
 <section id="add" class="add">
     <h2>Add Assignment</h2>
     <form action="." method="post" id="add__form" class="add__form">
@@ -72,4 +73,4 @@
 </section>
 <br>
 <p><a href=".?action=list_courses">View/Edit Courses</a></p>
-<?php include("view/footer.php");?>
+<?php include('view/footer.php') ?>
