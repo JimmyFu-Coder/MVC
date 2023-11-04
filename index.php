@@ -23,7 +23,44 @@ if(!$action){
 }
 
 switch($action){
-    case '':
+    case 'list_courses':
+        $courses = get_courses();
+        include('view/vourse_list.php');
+        break;
+    case 'add_course':
+        add_course($course_name);
+        header("Location: .?action=list_courses");
+        break;
+    case "add_assignment":
+        if($course_id && $description){
+            add_assignment($course_id, $description);
+            header("Location: .?course_id=$course_id");
+        }else{
+            $error = "Invalid assignment data.";
+            include("view/error.php");
+            exit(0);
+        }
+    case "delete_course":
+        if($course_id){
+            try{
+                delete_course($course_id);
+            }catch(PDOException $e){
+                $error = "You can not detele a course";
+                include("view/error.php");
+                exit(0);
+            }
+            header("Location:.?action=list_course");
+        }
+        break;
+    case "delete_assignment":
+        if($assignment_id){
+            delete_assignment($assignment_id);
+            header("Location: .?course_id=$course_id");
+        }else{
+            $error = "Missing assignment id";
+            include("view/error.php");
+        }
+        break;
     default:
         $course_name = get_course_name($course_id);
         $course = get_courses();
